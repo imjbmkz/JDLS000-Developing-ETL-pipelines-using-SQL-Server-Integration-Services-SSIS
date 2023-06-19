@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Product Sales Pipeline Demo", "Product Sales Pipeline Demo.dtproj", "{8E92C120-03DB-4F33-B87E-51390CD9E906}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E92C120-03DB-4F33-B87E-51390CD9E906}.Development|Default.ActiveCfg = Development
+		{8E92C120-03DB-4F33-B87E-51390CD9E906}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F07BF7A-0499-4481-BA14-20F5EA3150E4}
+	EndGlobalSection
+EndGlobal

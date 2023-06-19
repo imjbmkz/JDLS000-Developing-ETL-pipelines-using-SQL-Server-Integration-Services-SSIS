@@ -1,0 +1,820 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/17/2023 5:53:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-0UNAVFCC"
+  DTS:CreatorName="LAPTOP-0UNAVFCC\Josh"
+  DTS:DTSID="{FA127E25-DFC5-48D5-853A-A360A0DB9D92}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5209.0"
+  DTS:LocaleID="13321"
+  DTS:ObjectName="STG_FCT_PRODUCT_SALES"
+  DTS:PackageType="5"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{292AA381-CA87-4C03-8347-5FF906C8AEE5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CSV_PRODUCT_SALES]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{16E9C394-74A4-4BCD-906C-289B765CF961}"
+      DTS:ObjectName="CSV_PRODUCT_SALES">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::CSV_FILE_TO_READ]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="13321"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Josh\OneDrive\Community Stuff\Josh Dev\Developing ETL pipelines using SQL Server Integration Services (SSIS)\data_sources\sales_product\new\">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ORDER_ID"
+              DTS:DTSID="{325C679B-9BAF-4790-82BA-7EB13947B7EA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PRODUCT"
+              DTS:DTSID="{B0ACB8FB-46D9-44F5-A19D-36BB4CAB97ED}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="QUANTITY_ORDERED"
+              DTS:DTSID="{7FC0856D-A014-4D8E-8CDC-85165DFAA7F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PRICE_EACH"
+              DTS:DTSID="{F01996CF-8623-453B-BD9F-E4E4ED3B26C6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ORDER_DATE"
+              DTS:DTSID="{B8489754-6CBB-4230-87F1-09875C4A9B17}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PURCHASE_ADDRESS"
+              DTS:DTSID="{1F8807E4-DC33-4BF6-9B1E-1D119C8B1F1F}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3EB4DA3A-B3C7-4B13-BE40-2034B15F4434}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CSV_FILE_NAME">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{014A9C74-0FEB-41AD-B443-8E6623D0EE17}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::LOAD_FOLDER] +  @[User::CSV_FILE_NAME]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CSV_FILE_TO_MOVE">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Josh\OneDrive\Community Stuff\Josh Dev\Developing ETL pipelines using SQL Server Integration Services (SSIS)\data_sources\sales_product\loaded\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{284317E2-03EE-4B32-9FFF-2DE2BB8F5E4D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::NEW_FOLDER] +  @[User::CSV_FILE_NAME]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CSV_FILE_TO_READ">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Josh\OneDrive\Community Stuff\Josh Dev\Developing ETL pipelines using SQL Server Integration Services (SSIS)\data_sources\sales_product\new\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1D6F0E8A-D290-4063-AFF4-4EB4B1E18A3F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LOAD_FOLDER">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Josh\OneDrive\Community Stuff\Josh Dev\Developing ETL pipelines using SQL Server Integration Services (SSIS)\data_sources\sales_product\loaded\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{48130466-AFBD-4006-9E0D-C4002B45092E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NEW_FOLDER">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Josh\OneDrive\Community Stuff\Josh Dev\Developing ETL pipelines using SQL Server Integration Services (SSIS)\data_sources\sales_product\new\</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EST - Truncate STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D1918794-A4DF-4DE3-9221-077793454B7F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST - Truncate STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E57E47EE-82AB-4B4E-8530-5A6036296430}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG_FCT_PRODUCT_SALES" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\FELC - Loop through all CSV files"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{DF9427A7-A891-40E1-8C57-E3CA17055AD2}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FELC - Loop through all CSV files">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{A76082B7-438A-4A26-9CC6-EACD6701A90E}"
+        DTS:ObjectName="{A76082B7-438A-4A26-9CC6-EACD6701A90E}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\Josh\OneDrive\Community Stuff\Josh Dev\Developing ETL pipelines using SQL Server Integration Services (SSIS)\data_sources\sales_product\new" />
+            <FEFEProperty
+              FileSpec="Sales_*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="1" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{DC089119-F248-4811-ABC9-50FCFBE2EB0C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT - CSV to DB"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="D - STG DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[STG_FCT_PRODUCT_SALES]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Connections[OleDbConnection]"
+                      connectionManagerID="{E57E47EE-82AB-4B4E-8530-5A6036296430}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LAPTOP-0UNAVFCC.SSIS_ETL_DEVELOPMENT_DEMO]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].Columns[ORDER_ID]"
+                          cachedDataType="i4"
+                          cachedName="ORDER_ID"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[ORDER_ID]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[ORDER_ID]" />
+                        <inputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].Columns[PRODUCT]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="PRODUCT"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[PRODUCT]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[PRODUCT]" />
+                        <inputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].Columns[QUANTITY_ORDERED]"
+                          cachedDataType="i4"
+                          cachedName="QUANTITY_ORDERED"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITY_ORDERED]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[QUANTITY_ORDERED]" />
+                        <inputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].Columns[PRICE_EACH]"
+                          cachedDataType="r4"
+                          cachedName="PRICE_EACH"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_EACH]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[PRICE_EACH]" />
+                        <inputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].Columns[ORDER_DATE]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ORDER_DATE"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[ORDER_DATE]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[ORDER_DATE]" />
+                        <inputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].Columns[PURCHASE_ADDRESS]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="PURCHASE_ADDRESS"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[PURCHASE_ADDRESS]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[PURCHASE_ADDRESS]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[ORDER_ID]"
+                          dataType="i4"
+                          name="ORDER_ID" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[PRODUCT]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PRODUCT" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITY_ORDERED]"
+                          dataType="i4"
+                          name="QUANTITY_ORDERED" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[PRICE_EACH]"
+                          dataType="r4"
+                          name="PRICE_EACH" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[ORDER_DATE]"
+                          dataType="dbTimeStamp"
+                          name="ORDER_DATE" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input].ExternalColumns[PURCHASE_ADDRESS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PURCHASE_ADDRESS" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="13321"
+                  name="S - CSV Data"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[CSV_PRODUCT_SALES]"
+                      connectionManagerRefId="Package.ConnectionManagers[CSV_PRODUCT_SALES]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[ORDER_ID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[ORDER_ID]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[ORDER_ID]"
+                          name="ORDER_ID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[PRODUCT]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[PRODUCT]"
+                          length="50"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[PRODUCT]"
+                          name="PRODUCT"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[QUANTITY_ORDERED]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[QUANTITY_ORDERED]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[QUANTITY_ORDERED]"
+                          name="QUANTITY_ORDERED"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[PRICE_EACH]"
+                          dataType="r4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[PRICE_EACH]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[PRICE_EACH]"
+                          name="PRICE_EACH"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[ORDER_DATE]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[ORDER_DATE]"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[ORDER_DATE]"
+                          name="ORDER_DATE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[PURCHASE_ADDRESS]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[PURCHASE_ADDRESS]"
+                          length="50"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].Columns[PURCHASE_ADDRESS]"
+                          name="PURCHASE_ADDRESS"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[ORDER_ID]"
+                          dataType="i4"
+                          name="ORDER_ID" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[PRODUCT]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PRODUCT" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[QUANTITY_ORDERED]"
+                          dataType="i4"
+                          name="QUANTITY_ORDERED" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[PRICE_EACH]"
+                          dataType="r4"
+                          name="PRICE_EACH" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[ORDER_DATE]"
+                          dataType="dbTimeStamp"
+                          name="ORDER_DATE" />
+                        <externalMetadataColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output].ExternalColumns[PURCHASE_ADDRESS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PURCHASE_ADDRESS" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\FELC - Loop through all CSV files\DFT - CSV to DB.Paths[Flat File Source Output]"
+                  endId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB.Inputs[OLE DB Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FELC - Loop through all CSV files\FST - Move to loaded"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{FBF37E3F-BC6F-4CC1-AAEA-F3500EA18D69}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="FST - Move to loaded"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::CSV_FILE_TO_READ"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::CSV_FILE_TO_MOVE"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FELC - Loop through all CSV files.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{05ABB185-B77C-4C42-9459-CD2B5F431A6F}"
+          DTS:From="Package\FELC - Loop through all CSV files\DFT - CSV to DB"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\FELC - Loop through all CSV files\FST - Move to loaded" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{12FF2BED-158D-4DC4-89D6-60DC8401651F}"
+          DTS:ObjectName="{12FF2BED-158D-4DC4-89D6-60DC8401651F}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::CSV_FILE_NAME" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DA6DD976-52F7-4C58-9EF4-47D9F80901F8}"
+      DTS:From="Package\EST - Truncate STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\FELC - Loop through all CSV files" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\EST - Truncate STG"
+          TopLeft="252.77776396661,48.5333329958385" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\FELC - Loop through all CSV files\DFT - CSV to DB"
+          TopLeft="106.011092337029,21.8222213583964" />
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\FELC - Loop through all CSV files\FST - Move to loaded"
+          TopLeft="128.022207621844,125.777775592098" />
+        <EdgeLayout
+          Id="Package\FELC - Loop through all CSV files.PrecedenceConstraints[Constraint]"
+          TopLeft="184.811092337029,63.4222213583964">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.0111152848158,62.3555542337012"
+              Start="0,0"
+              End="32.0111152848158,54.8555542337012">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.1777771168506" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.1777771168506"
+                    Point2="0,31.1777771168506"
+                    Point3="4,31.1777771168506" />
+                  <mssgle:LineSegment
+                    End="28.0111152848158,31.1777771168506" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.0111152848158,31.1777771168506"
+                    Point2="32.0111152848158,31.1777771168506"
+                    Point3="32.0111152848158,35.1777771168506" />
+                  <mssgle:LineSegment
+                    End="32.0111152848158,54.8555542337012" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="432.8,225.6"
+          Size="432.8,268.8"
+          Id="Package\FELC - Loop through all CSV files"
+          TopLeft="138.888881300335,149.644443403836" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="339.17776396661,90.1333329958385">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.1111173337256,59.5111104079972"
+              Start="0,0"
+              End="16.1111173337256,52.0111104079972">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.7555552039986" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.7555552039986"
+                    Point2="0,29.7555552039986"
+                    Point3="4,29.7555552039986" />
+                  <mssgle:LineSegment
+                    End="12.1111173337256,29.7555552039986" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.1111173337256,29.7555552039986"
+                    Point2="16.1111173337256,29.7555552039986"
+                    Point3="16.1111173337256,33.7555552039986" />
+                  <mssgle:LineSegment
+                    End="16.1111173337256,52.0111104079972" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\FELC - Loop through all CSV files\DFT - CSV to DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data"
+          TopLeft="204.999988799294,150.799998951356" />
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB"
+          TopLeft="280.833317989277,261.155553739512" />
+        <EdgeLayout
+          Id="Package\FELC - Loop through all CSV files\DFT - CSV to DB.Paths[Flat File Source Output]"
+          TopLeft="275.399988799294,192.399998951356">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.2333291899829,68.7555547881568"
+              Start="0,0"
+              End="72.2333291899829,61.2555547881568">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.3777773940784" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.3777773940784"
+                    Point2="0,34.3777773940784"
+                    Point3="4,34.3777773940784" />
+                  <mssgle:LineSegment
+                    End="68.2333291899829,34.3777773940784" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68.2333291899829,34.3777773940784"
+                    Point2="72.2333291899829,34.3777773940784"
+                    Point3="72.2333291899829,38.3777773940784" />
+                  <mssgle:LineSegment
+                    End="72.2333291899829,61.2555547881568" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FELC - Loop through all CSV files\DFT - CSV to DB\D - STG DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

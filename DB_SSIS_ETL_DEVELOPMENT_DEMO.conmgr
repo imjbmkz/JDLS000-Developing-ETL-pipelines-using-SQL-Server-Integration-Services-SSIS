@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAPTOP-0UNAVFCC.SSIS_ETL_DEVELOPMENT_DEMO"
+  DTS:DTSID="{E57E47EE-82AB-4B4E-8530-5A6036296430}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LAPTOP-0UNAVFCC;Initial Catalog=SSIS_ETL_DEVELOPMENT_DEMO;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Product Sales Pipeline Demo-{E57E47EE-82AB-4B4E-8530-5A6036296430}LAPTOP-0UNAVFCC.SSIS_ETL_DEVELOPMENT_DEMO;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
