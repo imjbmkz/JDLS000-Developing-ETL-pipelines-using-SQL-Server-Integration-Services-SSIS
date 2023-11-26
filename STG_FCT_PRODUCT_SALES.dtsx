@@ -11,8 +11,8 @@
   DTS:LocaleID="13321"
   DTS:ObjectName="STG_FCT_PRODUCT_SALES"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{292AA381-CA87-4C03-8347-5FF906C8AEE5}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{C0257AEA-636A-4E93-980D-5153DA04A8AA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -664,43 +664,43 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172.8,41.6"
+          Size="172.666666666667,41.3333333333334"
           Id="Package\EST - Truncate STG"
           TopLeft="252.77776396661,48.5333329958385" />
         <NodeLayout
-          Size="157.6,41.6"
+          Size="161.333333333334,42.6666666666667"
           Id="Package\FELC - Loop through all CSV files\DFT - CSV to DB"
           TopLeft="106.011092337029,21.8222213583964" />
         <NodeLayout
-          Size="177.6,41.6"
+          Size="177.333333333334,41.3333333333334"
           Id="Package\FELC - Loop through all CSV files\FST - Move to loaded"
           TopLeft="128.022207621844,125.777775592098" />
         <EdgeLayout
           Id="Package\FELC - Loop through all CSV files.PrecedenceConstraints[Constraint]"
-          TopLeft="184.811092337029,63.4222213583964">
+          TopLeft="186.677759003696,64.4888880250631">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="32.0111152848158,62.3555542337012"
+              EndConnector="30.011115284815,61.2888875670349"
               Start="0,0"
-              End="32.0111152848158,54.8555542337012">
+              End="30.011115284815,53.7888875670349">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.1777771168506" />
+                    End="0,26.6444437835175" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.1777771168506"
-                    Point2="0,31.1777771168506"
-                    Point3="4,31.1777771168506" />
+                    Point1="0,26.6444437835175"
+                    Point2="0,30.6444437835175"
+                    Point3="4,30.6444437835175" />
                   <mssgle:LineSegment
-                    End="28.0111152848158,31.1777771168506" />
+                    End="26.011115284815,30.6444437835175" />
                   <mssgle:CubicBezierSegment
-                    Point1="28.0111152848158,31.1777771168506"
-                    Point2="32.0111152848158,31.1777771168506"
-                    Point3="32.0111152848158,35.1777771168506" />
+                    Point1="26.011115284815,30.6444437835175"
+                    Point2="30.011115284815,30.6444437835175"
+                    Point3="30.011115284815,34.6444437835175" />
                   <mssgle:LineSegment
-                    End="32.0111152848158,54.8555542337012" />
+                    End="30.011115284815,53.7888875670349" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -712,36 +712,36 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="432.8,225.6"
-          Size="432.8,268.8"
+          PanelSize="432.666666666667,226"
+          Size="432.666666666667,268.666666666667"
           Id="Package\FELC - Loop through all CSV files"
           TopLeft="138.888881300335,149.644443403836" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="339.17776396661,90.1333329958385">
+          TopLeft="339.111097299943,89.8666663291718">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="16.1111173337256,59.5111104079972"
+              EndConnector="16.111117333725,59.7777770746642"
               Start="0,0"
-              End="16.1111173337256,52.0111104079972">
+              End="16.111117333725,52.2777770746642">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.7555552039986" />
+                    End="0,25.8888885373321" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.7555552039986"
-                    Point2="0,29.7555552039986"
-                    Point3="4,29.7555552039986" />
+                    Point1="0,25.8888885373321"
+                    Point2="0,29.8888885373321"
+                    Point3="4,29.8888885373321" />
                   <mssgle:LineSegment
-                    End="12.1111173337256,29.7555552039986" />
+                    End="12.111117333725,29.8888885373321" />
                   <mssgle:CubicBezierSegment
-                    Point1="12.1111173337256,29.7555552039986"
-                    Point2="16.1111173337256,29.7555552039986"
-                    Point3="16.1111173337256,33.7555552039986" />
+                    Point1="12.111117333725,29.8888885373321"
+                    Point2="16.111117333725,29.8888885373321"
+                    Point3="16.111117333725,33.8888885373321" />
                   <mssgle:LineSegment
-                    End="16.1111173337256,52.0111104079972" />
+                    End="16.111117333725,52.2777770746642" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -757,7 +757,7 @@
     design-time-name="Package\FELC - Loop through all CSV files\DFT - CSV to DB">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="140.8,41.6"
           Id="Package\FELC - Loop through all CSV files\DFT - CSV to DB\S - CSV Data"
@@ -797,7 +797,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
